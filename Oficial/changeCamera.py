@@ -58,8 +58,8 @@ while(True):
   if cv2.waitKey(1) & 0xFF == ord('q'):
     break
   
-  cv2.imshow("videoFiltros", filter)
-  out.write(filter)
+  cv2.imshow("videoFiltros", result)
+  out.write(result)
   if cv2.waitKey(1) & 0xFF == ord('q'):
     break
 
