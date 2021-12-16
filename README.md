@@ -24,7 +24,9 @@ O projeto foi criado com o intuito de demonstrar o que foi aprendido na cadeira 
 # Sobre o código
 A tela do sistema interativa que permite interação com mouse foi desenvolvida usando uma biblioteca Pyhton chamada [Tkinter](https://docs.python.org/3/library/tkinter.html) que permite fazer uma tela GUI com opção de janelas.
 
-![](ImagensReadme/tela_inicial.PNG)
+<p align="center">
+    <img src="ImagensReadme/tela_inicial.PNG">
+</p>
 
 ![Filtros para imagens](Ofical/colorFilter.py) e ![Filtros para captura de vídeo](Ofical/windows.py) que permite adicionar efeitos nas images e capturas através de atalhos de teclado sendo eles: *1 - Tons de Cinza, 2 - Radioativo, 3 - Pintura, 4 - Luminosidade e 5 - Detecção de cores vermelhas*.
 
@@ -33,21 +35,29 @@ A tela do sistema interativa que permite interação com mouse foi desenvolvida 
     <th>Original</th>
     <th>Tons de Cinza</th>
     <th>Radioativo</th>
+  </tr>  
+  <tr>
+    <td align="center"><img height="300em" widht="600em" src="ImagensReadme/teste.png"></td>
+    <td align="center"><img height="300em" src="ImagensReadme/maskgreyscale.png"></td>      
+    <td align="center"><img height="300em" src="ImagensReadme/radioactive.png"></td>
+  </tr>
+  <tr>
     <th>Pintura</th>
     <th>Luminosidade</th>
     <th>Detecção de Cores Vermelhas</th>
-    </tr>
+  </tr>
   <tr>
-    <td align="center"><img src="ImagensReadme/teste.jpg"></td>
-    <td align="center"><img src="ImagensReadme/maskgreyscale.png"></td>      
-    <td align="center"><img src="ImagensReadme/radioactive.png"></td>
-    <td align="center"><img src="ImagensReadme/painting.png"></td>
-    <td align="center"><img src="ImagensReadme/light.png"></td>
-    <td align="center"><img src="ImagensReadme/rouge.png"></td>
+    <td align="center"><img height="300em" src="ImagensReadme/painting.png"></td>
+    <td align="center"><img height="300em" src="ImagensReadme/light.png"></td>
+    <td align="center"><img height="300em" src="ImagensReadme/rouge.png"></td>
   </tr>
 </table>
 
+<br />
+
 [Filtro Vídeo](Oficial/videoFiltro.py)
+
+
 ![](ImagensReadme/foto_filtro_graduanda.png)
 
 
