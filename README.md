@@ -22,7 +22,7 @@ O projeto foi criado com o intuito de demonstrar o que foi aprendido na cadeira 
 # Como utilizar a aplicação
 
 # Sobre o código
-A tela do sistema interativa que permite interação com mouse foi desenvolvida usando uma biblioteca Pyhton chamada ![][Tkinter](https://docs.python.org/3/library/tkinter.html) que permite fazer uma tela GUI com opção de janelas.
+A tela do sistema interativa que permite interação com mouse foi desenvolvida usando uma biblioteca Pyhton chamada [Tkinter](https://docs.python.org/3/library/tkinter.html) que permite fazer uma tela GUI com opção de janelas.
 
 ![](ImagensReadme/tela_inicial.PNG)
 
@@ -38,20 +38,20 @@ A tela do sistema interativa que permite interação com mouse foi desenvolvida 
     <th>Detecção de Cores Vermelhas</th>
     </tr>
   <tr>
-    <td align="center"><img src="teste.jpg"></td>
-    <td align="center"><img src="StoriesDownloads/maskgreyscale.png"></td>      
-    <td align="center"><img src="StoriesDownloads/radioactive.png"></td>
-    <td align="center"><img src="StoriesDownloads/painting.png"></td>
-    <td align="center"><img src="StoriesDownloads/light.png"></td>
-    <td align="center"><img src="StoriesDownloads/rouge.png"></td>
+    <td align="center"><img src="ImagensReadme/teste.jpg"></td>
+    <td align="center"><img src="ImagensReadme/maskgreyscale.png"></td>      
+    <td align="center"><img src="ImagensReadme/radioactive.png"></td>
+    <td align="center"><img src="ImagensReadme/painting.png"></td>
+    <td align="center"><img src="ImagensReadme/light.png"></td>
+    <td align="center"><img src="ImagensReadme/rouge.png"></td>
   </tr>
 </table>
 
-![Filtro Vídeo](Oficial/videoFiltro.py)
+[Filtro Vídeo](Oficial/videoFiltro.py)
 ![](ImagensReadme/foto_filtro_graduanda.png)
 
 
 
 
-![][PNGs dos Filtros](https://www.pngegg.com/)
-![][Icones da Tela](https://www.iconsdb.com/)
+[PNGs dos Filtros](https://www.pngegg.com/)
+[Icones da Tela](https://www.iconsdb.com/)
