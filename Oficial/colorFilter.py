@@ -1,10 +1,6 @@
 import cv2
 import numpy as np
-import scipy
 
-#Read the image
-# image = cv2.imread('teste.png')
-# image = cv2.imread('StoriesUploads/Haru1.jpg')
 image = cv2.imread('StoriesUploads/teste.png')
 
 def reduzir_imagem(imagem):
@@ -65,21 +61,5 @@ def rouge(img):
   # rouge_re = reduzir_imagem(rouge)
   return rouge
 
-# img_resized =reduzir_imagem(image)
-# img_resized =image
-# a1 = greyscale(image)
-# a2 = painting(image)
-# a3 = light(image)
-# a4 = invertmask(image)
-# a5 = rouge(img_resized)
-# a5 = rouge(image)
-
-# cv2.imwrite('teste.jpg', a1)
-
-# cv2.imshow('tela', a1)
-# cv2.imshow('tela2', a2)
-# cv2.imshow('tela3', a3)
-# cv2.imshow('tela4', a4)
-# cv2.imshow('tela5', a5)
 cv2.waitKey(0)
 cv2.destroyAllWindows()

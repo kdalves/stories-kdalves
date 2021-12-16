@@ -298,10 +298,10 @@ label = tk.Button(master=window, image= logoImage, background='white', borderwid
 leave = tk.Button(master=window, image= leaveImage, bg='white', borderwidth = 0, command= window.destroy).place(x=350, y=4)
 
 
-imageFiltro = tk.Button(master=window, text= "Imagem \nFiltros", bg='#6824a3', fg="white", command=lambda: imageFilter(), padx=10, pady=15, justify=CENTER).place(x=80, y=200)
-video = tk.Button(master=window, text= "Câmera \nFiltros", bg='#6824a3', fg="white", command=lambda: video(), padx=10, pady=15, justify=CENTER).place(x=80, y=400)
-changeCamera = tk.Button(master=window, text= "Mudar \nCâmera", bg='#6824a3', fg="white", command=lambda: changeVideo(), padx=10, pady=15, justify=CENTER).place(x=250, y=200)
-cameraFiltroAccessory = tk.Button(master=window, text= "Câmera \nAcessório", fg="white", bg='#6824a3', command=lambda: accessory(), padx=10, pady=15, justify=CENTER).place(x=250, y=400)
+tk.Button(master=window, text= "Imagem \nFiltros", bg='#6824a3', fg="white", command=lambda: imageFilter(), padx=10, pady=15, justify=CENTER).place(x=80, y=200)
+tk.Button(master=window, text= "Câmera \nFiltros", bg='#6824a3', fg="white", command=lambda: video(), padx=10, pady=15, justify=CENTER).place(x=80, y=400)
+tk.Button(master=window, text= "Mudar \nCâmera", bg='#6824a3', fg="white", command=lambda: changeVideo(), padx=10, pady=15, justify=CENTER).place(x=250, y=200)
+tk.Button(master=window, text= "Câmera \nAcessório", fg="white", bg='#6824a3', command=lambda: accessory(), padx=10, pady=15, justify=CENTER).place(x=250, y=400)
 
 
 window.mainloop()
