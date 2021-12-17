@@ -44,7 +44,7 @@ A tela do sistema que permite interação com mouse foi desenvolvida usando uma 
   <img src="ImagensReadme/tela_inicial.PNG">
 </p>
 
-O TkInter tem funções próprias que facilitam a montagem de uma tela de uma tela:
+O TkInter tem funções próprias que facilitam a montagem de uma tela de uma tela, como `title` para adicionar um título a janela criada, `wm_iconbitmap` que permite impotar uma imagem de extensão .ico para substituir o ícone padrão do TkInter,`geometry` defini a dimensão da janela inicial, `resizable` que permite alterar o tamanho da janelo caso utilize o mouse para aumentar a janela.
 
 ```bash
   window = tk.Tk()
@@ -52,6 +52,10 @@ O TkInter tem funções próprias que facilitam a montagem de uma tela de uma te
   window.wm_iconbitmap('Icons/instakath.ico')
   window.geometry("250x500")
   window.resizable(True, True)
+```
+  
+```bash
+  
 ```
 
 Abaixo explico como funciona cada um dos botões do Menu:
@@ -243,7 +247,11 @@ Abaixo explico como funciona cada um dos botões do Menu:
 
 # :rocket: Melhorias
 
-Em um futuro não muito distante quero melhorar a aplicação para deixar o mais semelhante ao stories do Instagram.
+Em um futuro não muito distante:
+- [ ] Melhorar a aplicação para deixar o mais semelhante ao stories do Instagram
+- [ ] Colocar atalhos de teclado como bind nos botões
+- [ ] Salvar vídeo somente quando clicar em um botão para iniciar
+- [ ] Adicionar mais filtros
      
 # :woman_student: Curiosidade
      
