@@ -339,33 +339,48 @@ Para esse filtro converte a imagem RGB para BGR para HSV que pega o valor de sat
   
 *Pintura*
 
+Nesse filtro utilizo do k-means para calcular dados em um conjunto maior e transformá-lo em um menor com a ideia de compactação de dados. Então esse algoritmo identifica vetores em um conjunto, encontra o ponto central de cada um deles formando um conjunto menor com todos os pontos indificados cuja sua distância para o próximo ponto seja menor em relação a distância do próximo ponto central.
 
-
-```bash
-  def painting(img):
+Insero uma imagem que se não for nula definiamos a ela a quantidade de `NCLUSTERS` que é a quntidade de cores que serão identificadas na imagem, no caso atribui o valor 10. A `NRODADAS` defini quantas vezes essa imagem vai ser analisada novamente, no exemplo faremos apenas 1 vez para entender como a imagem está se comportando no resultado final.
+  
+  ```bash
     NCLUSTERS = 10
     NRODADAS = 10
+  ```
+  
+Depois separa as informações da imagem inserida pegando sua Altura(`height`), Largura(`width`) e Canais de Cores(`channels`) e logo em seguida se calcula uma amostra da imagem identificando todos os pixels dela. Então o `sample` é toda é o total de linhas vinculados a um total de pixels em 3 colunas que representam o (R, G, B).
 
-    height, width, channels = img.shape
-    samples = np.zeros([height*width, 3], dtype = np.float32)
-    count = 0
+  ```bash
+        height, width, channels = imagem.shape
+        samples = np.zeros([height*width, 3], dtype = np.float32)
+  
+        count = 0
 
-    for x in range(height):
-      for y in range(width):
-        samples[count] = img[x][y]
-        count += 1
-
-    compactness, labels, centers = cv2.kmeans(samples,
-                                        NCLUSTERS, 
-                                        None,
-                                        (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 10000, 0.0001), 
-                                        NRODADAS, 
-                                        cv2.KMEANS_RANDOM_CENTERS)
+        for x in range(height):
+            for y in range(width):
+                samples[count] = imagem[x][y]
+                count += 1
+  ```
+  
+  Calculado a quantidade de pixels por cor é feito o calculo abaixo de k-means que utiliza a amostra da imagem (`sample`), número de cores analisadas, o terceiro parmetro no kmeans do python utiliza a melhor camada, nesse exemplo não vamos utilizar esse parâmetro, por isso está atribuido `None`. No quarto parâmentro verificasse o critério de identificação dos núcleos de cada pixel, usando varíaveis próprias do openCv `cv2.TERM_CRITERIA_EPS` e `cv2.TERM_CRITERIA_MAX_ITER` para identificar seus limites definimos o total de interações para identificá-las no caso 10000 e a margem de tolerância de cor que é para retornar 0.0001. o quinto parâmentro `NRODADAS` de quantas vezes essa imagem  será analisada e o `cv2.KMEANS_PP_CENTERS` que é um parâmentro openCV que já carrega os pontos centrais do que é encontrado na imagem de form ordenda.
+  
+  ```bash    
+        compactness, labels, centers = cv2.kmeans(samples,
+                                            NCLUSTERS, 
+                                            None,
+                                            (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 10000, 0.0001), 
+                                            NRODADAS, 
+                                            cv2.KMEANS_PP_CENTERS)
+  ```
+  Para finalizar utiliza-se todos os pontos centrais para criar um vetor de centróides para ser identificado na imagem e retorna a imagem resutado após essa análise.
+  
+  ```bash    
     centers = np.uint8(centers)
     res = centers[labels.flatten()]
     painting = res.reshape((img.shape))
     return painting
-```
+
+  ```
 
 *Luminosidade*
 
