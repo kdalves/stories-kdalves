@@ -413,7 +413,21 @@ Nesse filtro converte a imagem RGB para BGR para HSV e adiciona variável 'image
 ``` 
 ___
   
-  
+Para as funcionalidades de Filtro com câmera: [Filtro Câmera Principal e Secundárias](Oficial/changeCamera.py) o código é semelhante ao de [Filtro de Imagem](Oficial/imageFilter.py) e adiciona os mesmos filtros, mudando apenas que recebe uma captura de vídeo e dependendo do que o usuário escolheu passa qual a câmera que está sendo usada que pode ser identificado lá em [Menu Principal](Oficial/menuOficial.py) onde chama a função.
+
+```bash
+def video():  
+  ChangeVideo(cv2.VideoCapture(0))
+
+def changeVideo():
+  ChangeVideo(cv2.VideoCapture(2))
+```
+E também grava um vídeo do que o usário está fazendo em 'StoriesDownloads/video/'.
+
+```bash
+  fourcc = cv2.VideoWriter_fourcc(*'XVID')
+  out = cv2.VideoWriter('StoriesDownloads/video/videoFiltros.mp4',fourcc, 20.0, (640,480))
+```
 </details>
 
 # :rocket: Melhorias
