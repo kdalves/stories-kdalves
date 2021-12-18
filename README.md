@@ -212,7 +212,7 @@ Abaixo explico como funciona cada um dos botões do Menu:
     </tr>    
     <tr>
       <th>Rainha</th>
-      <th>Chapúe de Natal</th>
+      <th>Chapéu de Natal</th>
     </tr>  
     <tr>
       <td align="center"><img height="300em" widht="800em" src="ImagensReadme/queen.PNG"></td>  
@@ -252,8 +252,153 @@ O TkInter tem funções próprias que facilitam a montagem de uma tela de uma te
 ```
 
 Para cada uma das funções criei uma classe para cada interação: [Filtro em Imagem](Oficial/imageFilter.py), [Filtro na Captura de Vídeo para as Duas Câmeras](Oficial/changeCamera.py) e [Captura de Vídeo Adicionando Chapéus](Oficial/cameraFiltroAccessory.py).
+___  
+
+Para a primeira ação do menu o [Filtro em Imagem](Oficial/imageFilter.py) usei funções da biblioteca OpenCV: `imread` lê a imagem que foi passado o caminho para ela, `resize` para redimencionar uma imagem recebida, `waitKey` para capturar entrada de informação via teclado, `imshow` para abrir uma janela nova com o filtro aplicado na imagem, `imwrite` para salvar a imagem alterada. Criei uma função para redimensionar porque a imagem sempre abria muito grande para poder visualizar.
+
+Se encontra a imagem redimenciona, espera uma interação do usuário que ao precionar qualquer uma das seguintes teclas: 1 - Tons de Cinza, 2 - Radiativo, 3 - Pintura, 4 -Luminosidade e 5 - Detecção de cores vermelhas, chamando o filtro repectivo a tecla pressinada chamando funções de [colorFilter](Oficial/colorFilter.py) que explicarei logo após esse código. Depois de aplicado o efeito, mostra em uma tela a parte o filtro aplicado e salva essa imagem em `StoriesDownloads/images/` para sair da tela basta apertar a tecla 'q' para utlizar as outras ações.
+
+```bash
+image = cv2.imread('StoriesUploads/teste.png')
+
+class FilterImage():
+  def __init__(self):
+    def resizeImage(imagem):
+      porcetagem_escala = 10
+      comprimento = int(imagem.shape[1] * porcetagem_escala / 100)
+      altura = int(imagem.shape[0] * porcetagem_escala / 100)
+      dimensao_imagem = (comprimento, altura)
+      return cv2.resize(imagem, dimensao_imagem, interpolation = cv2.INTER_AREA)
+
+    while(True):
+      imageResized = resizeImage(image)
+
+      key = cv2.waitKey(10)
+
+      if key != -1:
+        key = chr(key)
+
+      if key == '\x1b':
+        break
+
+      if key == '1':
+        maskgreyscale = colorFilter.greyscale(imageResized)
+        cv2.imshow('Tons de Cinza', maskgreyscale)
+        cv2.imwrite('StoriesDownloads/images/maskgreyscale.png', maskgreyscale)
+      elif key == '2':      
+        radioactive = colorFilter.invertmask(imageResized)
+        cv2.imshow('Radioativo', radioactive)
+        cv2.imwrite('StoriesDownloads/images/radioactive.png', radioactive)
+      elif key == '3':      
+        painting = colorFilter.painting(imageResized)
+        cv2.imshow('Pintura', painting)
+        cv2.imwrite('StoriesDownloads/images/painting.png', painting)
+      elif key == '4':      
+        light = colorFilter.light(imageResized)
+        cv2.imshow('Luminosidade', light)
+        cv2.imwrite('StoriesDownloads/images/light.png', light)
+      elif key == '5':      
+        rouge = colorFilter.rouge(imageResized)
+        cv2.imshow('Deteccao de Cores Vermelhas', rouge)
+        cv2.imwrite('StoriesDownloads/images/rouge.png', rouge)
+
+      if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+
+      cv2.imshow('Imagem Filtro',imageResized)
+      if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+```
+___
+  
+Os [filtros](Oficial/colorFilter.py) todos utilizei funções próprias do OpenCV que já aplicam a modificação na imagem:
+
+*Tons de Cinza*
+
+Com a função do OpenCV `cvtColor` passa a imagem que quer alterada e o `COLOR_BGR2GRAY` converte imagem RGB para BRG e cor Cinza.
+
+```bash
+  def greyscale(img):
+    greyscale = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    return greyscale
+```
+  
+*Radiativo*
+
+Para esse filtro converte a imagem RGB para BGR para HSV que pega o valor de saturação de matiz, depois usa o `bitwise_not` que inverte os valores dos pixels.
+
+```bash
+  def invertmask(img):
+    imghsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+    invertmask = cv2.bitwise_not(imghsv)
+    return invertmask
+```
+  
+*Pintura*
 
 
+
+```bash
+  def painting(img):
+    NCLUSTERS = 10
+    NRODADAS = 10
+
+    height, width, channels = img.shape
+    samples = np.zeros([height*width, 3], dtype = np.float32)
+    count = 0
+
+    for x in range(height):
+      for y in range(width):
+        samples[count] = img[x][y]
+        count += 1
+
+    compactness, labels, centers = cv2.kmeans(samples,
+                                        NCLUSTERS, 
+                                        None,
+                                        (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 10000, 0.0001), 
+                                        NRODADAS, 
+                                        cv2.KMEANS_RANDOM_CENTERS)
+    centers = np.uint8(centers)
+    res = centers[labels.flatten()]
+    painting = res.reshape((img.shape))
+    return painting
+```
+
+*Luminosidade*
+
+Esse filtro usa o `convertScaleAbs` também OpenCV que dimensiona e calcula valores absolutos e converte o resultado em 8 bits. No primeiro parametro aparece a imagem para ser alterada e o segundo parametro aumenta o valor de escala, então dá a impressão de aumento e diminuição de luz, no caso se encontra fixo no valor de 50.
+
+```bash
+  def light(img):
+    light = cv2.convertScaleAbs(img, beta=50)
+    return light
+```
+
+*Detecção de Cores Vermelhas*
+
+Nesse filtro converte a imagem RGB para BGR para HSV e adiciona variável 'imagehsv', e na variável 'gray' coloca RGB para BGR para tons de cinza, no 'lowerRed' e 'uppeRed' defino os tons de vermelho que quero identificar e aplico na função `inRange` do OpenCV que retorna uma matriz de elementos igual a 255 se os elementos de uma determinada matriz estiverem entre as duas matrizes que representam os limites superiores e inferiores seto na variável 'mask', na 'maskInv' uso novamente a função `bitwise_not` para inverter os tons de pixels contruio um 'background' que compara os pixels da imagem com a da máscara e uso o `stack` do Numpy que junta uma sequência de matrizes ao longo de um novo eixo. E na variável 'rouge' adicion0 duas imagens, destacando assim os tons vermelhos na imagem.
+
+```bash
+  def rouge(img):
+    imagehsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    lowerRed = np.array([160,100,50])
+    uppeRed = np.array([180,255,255])
+    mask = cv2.inRange(imagehsv, lowerRed, upperRed)
+    maskInv = cv2.bitwise_not(mask)
+    res = cv2.bitwise_and(img, img, mask=mask)
+    background = cv2.bitwise_and(gray, gray, mask = maskInv)
+    background = np.stack((background,)*3, axis=-1)
+    rouge = cv2.add(res, background)
+  
+    return rouge
+``` 
+___
+  
+  
 </details>
 
 # :rocket: Melhorias
