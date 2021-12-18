@@ -24,39 +24,25 @@ O projeto foi criado com o intuito de demonstrar o que foi aprendido na materia 
    - Utilizar OpenCV na sua linguagem de preferência.
 </details>
 
-# :hammer_and_wrench: Como utilizar a aplicação
+# :speech_balloon: Linguagem usada
+A linguagem escolhida para esse projeto foi o [Python](https://python.org.br/), que possui diversos materiais vinculados [OpenCV](https://docs.opencv.org/4.x/d6/d00/tutorial_py_root.html) que torna o estudo de Computação Gráfica mais prático, mesmo sendo um conteúdo de Processamento de Imagens sendo complexo.
+
+# :electric_plug: O que precisa para usar a aplicação
 - <b>Ambiente:</b> Necessita ter python instalado, OpenCV, TkInter e PIL. 
 - <b>Ferramenta:</b> Utilizei o Visual Code como IDE para desenvolver e rodar a aplicação. 
 - <b>Rodando o projeto:</b> A tela inicial é a [Menu Oficial](Oficial/menuOficial.py).
 - <b>Outros:</b> Usar duas câmeras para poder executar função de inversão de câmera simulando a de perfil.
 
-# :speech_balloon: Linguagem usada
-A linguagem escolhida para esse projeto foi o [Python](https://python.org.br/), que possui diversos materiais vinculados [OpenCV](https://docs.opencv.org/4.x/d6/d00/tutorial_py_root.html) que torna o estudo de Computação Gráfica mais prático, mesmo sendo um conteúdo de Processamento de Imagens sendo complexo.
-
-# :woman_technologist: Sobre o código
+# :hammer_and_wrench: Como utilizar a aplicação
 
 <details>
-  <summary>Explicação detalhada de cada interação na tela assim como o seu devido código</summary><br />
+  <summary>Explicação detalhada de como utilizar e resultados</summary><br />
   
-A tela do sistema que permite interação com mouse foi desenvolvida usando uma biblioteca Pyhton chamada [Tkinter](https://docs.python.org/3/library/tkinter.html) que permite fazer uma tela GUI com opção de janelas.
+Ao executar o [Menu Oficial](Oficial/menuOficial.py) abre o menu com as opções de interação do InstaKath:
 
 <p align="center">
   <img src="ImagensReadme/tela_inicial.PNG">
 </p>
-
-O TkInter tem funções próprias que facilitam a montagem de uma tela de uma tela, como `title` para adicionar um título a janela criada, `wm_iconbitmap` que permite impotar uma imagem de extensão .ico para substituir o ícone padrão do TkInter,`geometry` defini a dimensão da janela inicial, `resizable` que permite alterar o tamanho da janelo caso utilize o mouse para aumentar a janela.
-
-```bash
-  window = tk.Tk()
-  window.title("InstaKath")
-  window.wm_iconbitmap('Icons/instakath.ico')
-  window.geometry("250x500")
-  window.resizable(True, True)
-```
-  
-```bash
-  
-```
 
 Abaixo explico como funciona cada um dos botões do Menu:
 
@@ -79,7 +65,7 @@ Abaixo explico como funciona cada um dos botões do Menu:
       Toda vez que clica no filtro salva a imagem no StoriesDownloads/Imagem
     </td>
   </tr>
-      
+
   <table align="center">
   <tr>
     <th>Original</th>
@@ -88,8 +74,8 @@ Abaixo explico como funciona cada um dos botões do Menu:
   </tr>  
   <tr>
     <td align="center"><img height="300em" widht="600em" src="ImagensReadme/teste.png"></td>
-    <td align="center"><img height="300em" src="ImagensReadme/maskgreyscale.png"></td>      
-    <td align="center"><img height="300em" src="ImagensReadme/radioactive.png"></td>
+    <td align="center"><img height="300em" widht="600em" src="ImagensReadme/maskgreyscale.png"></td>      
+    <td align="center"><img height="300em" widht="600em" src="ImagensReadme/radioactive.png"></td>
   </tr>
   <tr>
     <th>Pintura</th>
@@ -97,9 +83,9 @@ Abaixo explico como funciona cada um dos botões do Menu:
     <th>Detecção de Cores Vermelhas</th>
   </tr>
   <tr>
-    <td align="center"><img height="300em" src="ImagensReadme/painting.png"></td>
-    <td align="center"><img height="300em" src="ImagensReadme/light.png"></td>
-    <td align="center"><img height="300em" src="ImagensReadme/rouge.png"></td>
+    <td align="center"><img height="300em" widht="600em" src="ImagensReadme/painting.png"></td>
+    <td align="center"><img height="300em" widht="600em" src="ImagensReadme/light.png"></td>
+    <td align="center"><img height="300em" widht="600em"  src="ImagensReadme/rouge.png"></td>
   </tr>
 </table>
 
@@ -122,7 +108,7 @@ Abaixo explico como funciona cada um dos botões do Menu:
       Toda vez que clica no filtro salva a imagem dos efeitos no StoriesDownloads/Imagem
     </td>
   </tr>
-  
+
   <table align="center">
     <tr>
       <th>Tons de Cinza</th>
@@ -168,7 +154,7 @@ Abaixo explico como funciona cada um dos botões do Menu:
       Toda vez que clica no filtro salva a imagem dos efeitos no StoriesDownloads/Imagem
     </td>
   </tr>
-  
+
   <table align="center">
     <tr>
       <th>Tons de Cinza</th>
@@ -193,7 +179,7 @@ Abaixo explico como funciona cada um dos botões do Menu:
       <td align="center" colspan="2"><img height="300em" src="ImagensReadme/videoRouge.png"></td>
     </tr>
   </table>
-   
+
    <table align="center">
   <tr>
     <td><img src="ImagensReadme/botao4.PNG"></td>
@@ -214,7 +200,7 @@ Abaixo explico como funciona cada um dos botões do Menu:
       Toda vez que clica no filtro salva a imagem dos efeitos no StoriesDownloads/Imagem e um vídeo de todo o processo desde que iniciou o sistema StoriesDownloads/Video
     </td>
   </tr>
-  
+
   <table align="center">
     <tr>
       <th>Chapéu de Formanda</th>
@@ -239,10 +225,35 @@ Abaixo explico como funciona cada um dos botões do Menu:
       <td align="center" colspan="2"><img height="300em" widht="800em" src="ImagensReadme/sombrero.PNG"></td>
     </tr>
   </table>
-     
-  [Vídeo Gravado](ImagensReadme/graduateVideo.mp4)
 
-<br />
+  [Vídeo Gravado](ImagensReadme/graduateVideo.mp4)
+</details>
+
+# :woman_technologist: Sobre o código
+
+<details>
+  <summary>Explicação detalhada do código</summary><br />
+  
+A tela do sistema que permite interação com mouse foi desenvolvida usando uma biblioteca Pyhton chamada [Tkinter](https://docs.python.org/3/library/tkinter.html) que permite fazer uma tela GUI com opção de janelas.
+
+O TkInter tem funções próprias que facilitam a montagem de uma tela de uma tela, como `title` para adicionar um título a janela criada, `wm_iconbitmap` que permite impotar uma imagem de extensão .ico para substituir o ícone padrão do TkInter,`geometry` defini a dimensão da janela inicial, `resizable` que permite alterar o tamanho da janelo caso utilize o mouse para aumentar a janela, `Button` que cria um botão que pode adicionar ações passando no paramentro `command`. Abaixo parte do código do [Menu Oficial](Oficial/menuOficial.py) para entender as funcionalidade explicadas:
+
+```bash
+  window = tk.Tk()
+  window.title("InstaKath")
+  window.wm_iconbitmap('Icons/instakath.ico')
+  window.geometry("250x500")
+  window.resizable(True, True)  
+  ...
+
+  tk.Button(master=window, image= galleryImage, text= "Imagem \nFiltros", 
+            bg='#6824a3', fg="white", command=imageFilter, 
+            padx=10, pady=15, justify=CENTER).place(x=100, y=100)
+```
+
+Para cada uma das funções criei uma classe para cada interação: [Filtro em Imagem](Oficial/imageFilter.py), [Filtro na Captura de Vídeo para as Duas Câmeras](Oficial/changeCamera.py) e [Captura de Vídeo Adicionando Chapéus](Oficial/cameraFiltroAccessory.py).
+
+
 </details>
 
 # :rocket: Melhorias
